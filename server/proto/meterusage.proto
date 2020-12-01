@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package project;
+
+message MeterUsageItem {
+    float meterusage = 1;
+    string time = 2;   
+}
+
+message MeterUsageResponse {
+    repeated MeterUsageItem items = 1;
+}
+
+message MeterUsageRequest {}
+
+service MeterUsageService {
+    rpc GetMeterUsage(MeterUsageRequest) returns (MeterUsageResponse) {}
+}
