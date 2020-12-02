@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 grpcio = "*"
 grpcio-tools = "*"
+flask = "*"
 
 [dev-packages]
 black = "*"
