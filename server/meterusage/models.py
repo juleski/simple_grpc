@@ -1,5 +1,5 @@
 from . import Base, engine
-from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy import Column, Integer, String, Float, DateTime
 
 
 class MeterUsage(Base):
@@ -7,7 +7,7 @@ class MeterUsage(Base):
 
     id = Column(Integer, primary_key=True)
     meterusage = Column(Float)
-    time = Column(String(100))
+    time = Column(DateTime)
 
     def __repr__(self):
         return f"{self.id}-{self.meterusage}-{self.time}"

@@ -1,3 +1,4 @@
+from google.protobuf.timestamp_pb2 import Timestamp
 from ..generated import meterusage_pb2_grpc, meterusage_pb2
 
 from . import session
@@ -15,8 +16,13 @@ class MeterUsageService(meterusage_pb2_grpc.MeterUsageServiceServicer):
             .all()
         )
 
-        results = [
-            meterusage_pb2.MeterUsageItem(meterusage=i.meterusage, time=i.time, id=i.id)
-            for i in items
-        ]
+        results = []
+        for i in items:
+            timestamp = Timestamp()
+            timestamp.FromDatetime(i.time)
+            temp = meterusage_pb2.MeterUsageItem(
+                meterusage=i.meterusage, time=timestamp, id=i.id
+            )
+            results.append(temp)
+
         return meterusage_pb2.MeterUsageResponse(items=results)

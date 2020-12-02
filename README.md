@@ -19,15 +19,15 @@
 
 # Clean up
 ## Killing the servers
+- Make sure you are in the root directory
 - Run `make kill_grpc` to shutdown the grpc server
 - Run `make kill_flask` to shutdown the flask proxy server
 - Run `make kill_db` to shutdown the db server
 
 ## Removing environment [optional]
-- Run `make clean` to delete python and javascript environment and packages
+- Run `make clean` to delete python and javascript environment andpackages
 
 # Points for improvement
 - Dockerize app
 - Use [gRPC Gateway](https://github.com/grpc-ecosystem/grpc-gateway) for proxying requests
 - Add tests to grpc server
-- Convert time to proper datetime values

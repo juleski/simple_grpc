@@ -1,7 +1,9 @@
 from __future__ import print_function
-import logging
 
+import logging
 import grpc
+
+from datetime import datetime
 
 from ..generated import meterusage_pb2
 from ..generated import meterusage_pb2_grpc
@@ -16,7 +18,11 @@ def run(page=1, page_size=20):
         )
 
         response = [
-            {"time": item.time, "meterusage": item.meterusage, "id": item.id}
+            {
+                "time": datetime.fromtimestamp(item.time.seconds),
+                "meterusage": round(item.meterusage, 2),
+                "id": item.id,
+            }
             for item in response.items
         ]
 

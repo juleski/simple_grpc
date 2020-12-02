@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy import Column, Integer, String, Float, DateTime
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database
 
@@ -32,7 +32,7 @@ class MeterUsage(Base):
 
     id = Column(Integer, primary_key=True)
     meterusage = Column(Float)
-    time = Column(String(100))
+    time = Column(DateTime)
 
     def __repr__(self):
         return f"{self.id}-{self.meterusage}-{self.time}"

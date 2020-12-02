@@ -12,13 +12,19 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
+
+
 DESCRIPTOR = _descriptor.FileDescriptor(
     name="meterusage.proto",
     package="project",
     syntax="proto3",
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x10meterusage.proto\x12\x07project">\n\x0eMeterUsageItem\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\nmeterusage\x18\x02 \x01(\x02\x12\x0c\n\x04time\x18\x03 \x01(\t"<\n\x12MeterUsageResponse\x12&\n\x05items\x18\x01 \x03(\x0b\x32\x17.project.MeterUsageItem"4\n\x11MeterUsageRequest\x12\x0c\n\x04page\x18\x01 \x01(\x05\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x32_\n\x11MeterUsageService\x12J\n\rGetMeterUsage\x12\x1a.project.MeterUsageRequest\x1a\x1b.project.MeterUsageResponse"\x00\x62\x06proto3',
+    serialized_pb=b'\n\x10meterusage.proto\x12\x07project\x1a\x1fgoogle/protobuf/timestamp.proto"Z\n\x0eMeterUsageItem\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\nmeterusage\x18\x02 \x01(\x02\x12(\n\x04time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp"<\n\x12MeterUsageResponse\x12&\n\x05items\x18\x01 \x03(\x0b\x32\x17.project.MeterUsageItem"4\n\x11MeterUsageRequest\x12\x0c\n\x04page\x18\x01 \x01(\x05\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x32_\n\x11MeterUsageService\x12J\n\rGetMeterUsage\x12\x1a.project.MeterUsageRequest\x1a\x1b.project.MeterUsageResponse"\x00\x62\x06proto3',
+    dependencies=[
+        google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,
+    ],
 )
 
 
@@ -73,11 +79,11 @@ _METERUSAGEITEM = _descriptor.Descriptor(
             full_name="project.MeterUsageItem.time",
             index=2,
             number=3,
-            type=9,
-            cpp_type=9,
+            type=11,
+            cpp_type=10,
             label=1,
             has_default_value=False,
-            default_value=b"".decode("utf-8"),
+            default_value=None,
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -96,8 +102,8 @@ _METERUSAGEITEM = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=29,
-    serialized_end=91,
+    serialized_start=62,
+    serialized_end=152,
 )
 
 
@@ -137,8 +143,8 @@ _METERUSAGERESPONSE = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=93,
-    serialized_end=153,
+    serialized_start=154,
+    serialized_end=214,
 )
 
 
@@ -197,10 +203,13 @@ _METERUSAGEREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=155,
-    serialized_end=207,
+    serialized_start=216,
+    serialized_end=268,
 )
 
+_METERUSAGEITEM.fields_by_name[
+    "time"
+].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _METERUSAGERESPONSE.fields_by_name["items"].message_type = _METERUSAGEITEM
 DESCRIPTOR.message_types_by_name["MeterUsageItem"] = _METERUSAGEITEM
 DESCRIPTOR.message_types_by_name["MeterUsageResponse"] = _METERUSAGERESPONSE
@@ -248,8 +257,8 @@ _METERUSAGESERVICE = _descriptor.ServiceDescriptor(
     index=0,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
-    serialized_start=209,
-    serialized_end=304,
+    serialized_start=270,
+    serialized_end=365,
     methods=[
         _descriptor.MethodDescriptor(
             name="GetMeterUsage",

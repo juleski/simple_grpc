@@ -9,14 +9,17 @@
     <div class="container" id="app">
       <h3 class="text-center">Meter Usage Data</h3>
       <div class="grid-x">
+        <div v-if="error" class="callout alert">
+          <h5>Invalid parameters passed. Page and Page Size should be integers</h5>
+        </div>
         <div class="cell small-3">
           <label>
-            <input type="text" placeholder="Page" v-model="page">
+            <input type="text" placeholder="Page" v-model="page" @click="clear_error">
           </label>
         </div>
         <div class="cell small-3">
           <label>
-            <input type="text" placeholder="Page Size" v-model="page_size">
+            <input type="text" placeholder="Page Size" v-model="page_size" @click="clear_error">
           </label>
         </div>
         <div class="cell small-3">

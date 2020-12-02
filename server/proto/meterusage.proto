@@ -2,10 +2,12 @@ syntax = "proto3";
 
 package project;
 
+import "google/protobuf/timestamp.proto";
+
 message MeterUsageItem {
     int32 id = 1;
     float meterusage = 2;
-    string time = 3;   
+    google.protobuf.Timestamp time = 3;   
 }
 
 message MeterUsageResponse {
