@@ -8,19 +8,42 @@
   <body>
     <div class="container" id="app">
       <h3 class="text-center">Meter Usage Data</h3>
-      <div class="columns medium-3" v-for="result in results">
-        <div class="card">
-          <div class="card-divider">
-            Time: {{ result.time }}
-          </div>
-          <div class="card-section">
-            <p>Meterusage: {{ result.meterusage }}.</p>
+      <div class="grid-x">
+        <div class="cell small-3">
+          <label>
+            <input type="text" placeholder="Page" v-model="page">
+          </label>
+        </div>
+        <div class="cell small-3">
+          <label>
+            <input type="text" placeholder="Page Size" v-model="page_size">
+          </label>
+        </div>
+        <div class="cell small-3">
+          <a class="button small" href="#" @click="fetch">Fetch</a>
+        </div>
+      </div>
+      <div class="grid-x">
+        <div class="columns medium-3" v-for="result in results">
+          <div class="card">
+            <div class="card-divider">
+              ID: {{ result.id }}
+            </div>
+            <div class="card-section">
+              <p>Meterusage: {{ result.meterusage }}.</p>
+              <p>Time: {{ result.time }}.</p>
+            </div>
           </div>
         </div>
       </div>
+      <!-- <div class="small-3 cell">
+        <label>Page
+          <input type="text" placeholder=".small-3.cell">
+        </label>
+      </div> -->
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue"></script>
-    <script src="app.js"></script>
+    <script src="src/index.js"></script>
   </body>
 </html>
