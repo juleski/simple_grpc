@@ -1,4 +1,8 @@
 import csv
+import sys
+import os
+
+from dotenv import load_dotenv
 
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -6,9 +10,17 @@ from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database
 
-engine = create_engine("postgres://postgres:example@localhost:5500/app")
-if not database_exists(engine.url):
-    create_database(engine.url)
+# Load env vars
+load_dotenv()
+
+engine = create_engine(os.getenv("DB_URL"))
+try:
+    if not database_exists(engine.url):
+        create_database(engine.url)
+    connection = engine.connect()
+except Exception as e:
+    print(str(e))
+    sys.exit()
 
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
@@ -39,7 +51,7 @@ if total == 2975:
 if insert_data:
     # Insert Data
     data = []
-    with open("meterusage.csv", "r") as file:
+    with open("data/meterusage.csv", "r") as file:
         reader = csv.reader(file)
         i = 0
         for row in reader:

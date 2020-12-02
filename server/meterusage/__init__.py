@@ -1,11 +1,23 @@
+import os
+
+from dotenv import load_dotenv
+
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database
 
-engine = create_engine("postgres://postgres:example@localhost:5500/app")
-if not database_exists(engine.url):
-    create_database(engine.url)
+# Load env vars
+load_dotenv()
+
+engine = create_engine(os.getenv("DB_URL"))
+try:
+    if not database_exists(engine.url):
+        create_database(engine.url)
+    connection = engine.connect()
+except Exception as e:
+    print(str(e))
+    sys.exit()
 
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
