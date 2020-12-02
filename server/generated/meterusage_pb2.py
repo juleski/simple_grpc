@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x10meterusage.proto\x12\x07project"2\n\x0eMeterUsageItem\x12\x12\n\nmeterusage\x18\x01 \x01(\x02\x12\x0c\n\x04time\x18\x02 \x01(\t"<\n\x12MeterUsageResponse\x12&\n\x05items\x18\x01 \x03(\x0b\x32\x17.project.MeterUsageItem"\x13\n\x11MeterUsageRequest2_\n\x11MeterUsageService\x12J\n\rGetMeterUsage\x12\x1a.project.MeterUsageRequest\x1a\x1b.project.MeterUsageResponse"\x00\x62\x06proto3',
+    serialized_pb=b'\n\x10meterusage.proto\x12\x07project">\n\x0eMeterUsageItem\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\nmeterusage\x18\x02 \x01(\x02\x12\x0c\n\x04time\x18\x03 \x01(\t"<\n\x12MeterUsageResponse\x12&\n\x05items\x18\x01 \x03(\x0b\x32\x17.project.MeterUsageItem"4\n\x11MeterUsageRequest\x12\x0c\n\x04page\x18\x01 \x01(\x05\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x32_\n\x11MeterUsageService\x12J\n\rGetMeterUsage\x12\x1a.project.MeterUsageRequest\x1a\x1b.project.MeterUsageResponse"\x00\x62\x06proto3',
 )
 
 
@@ -31,10 +31,29 @@ _METERUSAGEITEM = _descriptor.Descriptor(
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name="meterusage",
-            full_name="project.MeterUsageItem.meterusage",
+            name="id",
+            full_name="project.MeterUsageItem.id",
             index=0,
             number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="meterusage",
+            full_name="project.MeterUsageItem.meterusage",
+            index=1,
+            number=2,
             type=2,
             cpp_type=6,
             label=1,
@@ -52,8 +71,8 @@ _METERUSAGEITEM = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="time",
             full_name="project.MeterUsageItem.time",
-            index=1,
-            number=2,
+            index=2,
+            number=3,
             type=9,
             cpp_type=9,
             label=1,
@@ -78,7 +97,7 @@ _METERUSAGEITEM = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[],
     serialized_start=29,
-    serialized_end=79,
+    serialized_end=91,
 )
 
 
@@ -118,8 +137,8 @@ _METERUSAGERESPONSE = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=81,
-    serialized_end=141,
+    serialized_start=93,
+    serialized_end=153,
 )
 
 
@@ -130,7 +149,46 @@ _METERUSAGEREQUEST = _descriptor.Descriptor(
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
-    fields=[],
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="page",
+            full_name="project.MeterUsageRequest.page",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="page_size",
+            full_name="project.MeterUsageRequest.page_size",
+            index=1,
+            number=2,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
     extensions=[],
     nested_types=[],
     enum_types=[],
@@ -139,8 +197,8 @@ _METERUSAGEREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=143,
-    serialized_end=162,
+    serialized_start=155,
+    serialized_end=207,
 )
 
 _METERUSAGERESPONSE.fields_by_name["items"].message_type = _METERUSAGEITEM
@@ -190,8 +248,8 @@ _METERUSAGESERVICE = _descriptor.ServiceDescriptor(
     index=0,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
-    serialized_start=164,
-    serialized_end=259,
+    serialized_start=209,
+    serialized_end=304,
     methods=[
         _descriptor.MethodDescriptor(
             name="GetMeterUsage",

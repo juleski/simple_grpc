@@ -8,6 +8,9 @@ grpcio = "*"
 grpcio-tools = "*"
 flask = "*"
 flask-cors = "*"
+sqlalchemy = "*"
+psycopg2 = "*"
+sqlalchemy-utils = "*"
 
 [dev-packages]
 black = "*"

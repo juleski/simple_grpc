@@ -2,7 +2,7 @@ from concurrent import futures
 import grpc
 
 from .generated import meterusage_pb2_grpc
-from .grpc import MeterUsage
+from .meterusage.service import MeterUsageService
 
 
 class Server:
@@ -10,7 +10,7 @@ class Server:
     def run():
         server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
         meterusage_pb2_grpc.add_MeterUsageServiceServicer_to_server(
-            MeterUsage(), server
+            MeterUsageService(), server
         )
         server.add_insecure_port("[::]:50051")
         server.start()

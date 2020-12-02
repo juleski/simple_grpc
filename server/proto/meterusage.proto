@@ -3,15 +3,19 @@ syntax = "proto3";
 package project;
 
 message MeterUsageItem {
-    float meterusage = 1;
-    string time = 2;   
+    int32 id = 1;
+    float meterusage = 2;
+    string time = 3;   
 }
 
 message MeterUsageResponse {
     repeated MeterUsageItem items = 1;
 }
 
-message MeterUsageRequest {}
+message MeterUsageRequest {
+    int32 page = 1;
+    int32 page_size = 2;
+}
 
 service MeterUsageService {
     rpc GetMeterUsage(MeterUsageRequest) returns (MeterUsageResponse) {}

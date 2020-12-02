@@ -1,24 +1,17 @@
 from flask import Flask, jsonify
 from flask_cors import cross_origin
+from flask import request
+
+from .meterusage.client import run
 
 app = Flask(__name__)
-
-
-import grpc
-
-from .generated import meterusage_pb2
-from .generated import meterusage_pb2_grpc
 
 
 @app.route("/meterusage")
 @cross_origin(origins=["localhost:*", "http://127.0.0.1:*"])
 def fetch_meterusage():
-    with grpc.insecure_channel("localhost:50051") as channel:
-        stub = meterusage_pb2_grpc.MeterUsageServiceStub(channel)
-        response = stub.GetMeterUsage(meterusage_pb2.MeterUsageRequest())
-
-    response = [
-        {"time": item.time, "meterusage": item.meterusage} for item in response.items
-    ]
+    page = request.args.get("page", 1)
+    page_size = request.args.get("page_size", 20)
+    response = run(page=int(page), page_size=int(page_size))
 
     return jsonify(response)
