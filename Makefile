@@ -1,4 +1,5 @@
 # Makefile for configuring and setting up the application
+PHONY: clean
 
 setup_install:
 	# Setting up backend
@@ -21,10 +22,14 @@ run_flask:
 run_grpc:
 	.venv/bin/python -m server.grpc_server &
 
-run_backend:run_db run_flask run_grpc
+kill_db:
+	docker-compose down
 
-kill_backend:
-	kill -9 $(ps aux | grep "flask run" | awk '{print $2}')
+kill_flask:
+	kill -9 $$(ps -ef | grep "flask run" | head -1 | awk '{print $$2}')
+
+kill_grpc:
+	kill -9 $$(ps -ef | grep "server.grpc_server" | head -1 | awk '{print $$2}')
 
 clean:
 	rm -rf .venv

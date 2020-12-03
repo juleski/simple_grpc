@@ -17,8 +17,17 @@
 - Run `npx webpack serve` 
 - Then go to [http://localhost:8080/](http://localhost:8080/)
 
+# Clean up
+## Killing the servers
+- Run `make kill_grpc` to shutdown the grpc server
+- Run `make kill_flask` to shutdown the flask proxy server
+- Run `make kill_db` to shutdown the db server
+
+## Removing environment [optional]
+- Run `make clean` to delete python and javascript environment and packages
 
 # Points for improvement
 - Dockerize app
 - Use [gRPC Gateway](https://github.com/grpc-ecosystem/grpc-gateway) for proxying requests
 - Add tests to grpc server
+- Convert time to proper datetime values
